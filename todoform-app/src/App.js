@@ -1,5 +1,5 @@
 import React from 'react'
-import TodoForm from './components/todoform'
+import TodoForm from './components/TodoForm'
 
 const App = ({input_type, todoId = ""}) => {
   return (
