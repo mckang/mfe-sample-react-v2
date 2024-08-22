@@ -21,7 +21,7 @@ const prodConfig = {
       remotes: {
         todoform_app: `todoform_app@${todoformAppUrl}/remoteEntry.js`,
         todolist_app: `todolist_app@${todolistAppUrl}/remoteEntry.js`,
-        auth_app: `todolist_app@${authAppUrl}/remoteEntry.js`,        
+        auth_app: `auth_app@${authAppUrl}/remoteEntry.js`,        
       },
       shared: packageJson.dependencies,
     }),
