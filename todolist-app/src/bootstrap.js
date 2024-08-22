@@ -1,5 +1,4 @@
 import React from 'react';
-import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
@@ -7,13 +6,10 @@ import ReactDOM from 'react-dom';
 
 
 // Mount function to start up the app
-const mount = (el) => {
-  const root = createRoot(el);
-  root.render(  
-    <App />
-  );
-  // ReactDOM.render(<App />, el);
+const mount = (el, isSignedIn) => {
+  console.log("isSignedIn:", isSignedIn)
 
+  ReactDOM.render(<App isSignedIn={isSignedIn}/>, el);
 };
 
 // If we are in development and in isolation,
@@ -22,12 +18,11 @@ if (process.env.NODE_ENV === 'development') {
   const devRoot = document.querySelector('#_todo_list');
 
   if (devRoot) {
-    const root = createRoot(devRoot);
-    root.render(  
+    ReactDOM.render( 
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    );
+    , devRoot);
   }
 }
 

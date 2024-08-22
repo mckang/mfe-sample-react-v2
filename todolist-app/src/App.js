@@ -2,10 +2,10 @@ import React from 'react'
 import TodoList from './components/TodoList'
 
 
-const App = () => {
+const App = ({isSignedIn = false}) => {
   return (
     <div>
-      <TodoList/>
+      <TodoList isSignedIn={isSignedIn} />
     </div>
   )
 }

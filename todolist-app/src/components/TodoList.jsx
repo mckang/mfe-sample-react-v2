@@ -7,7 +7,7 @@ const navigate = (link) => {
   window.dispatchEvent(searchEvent);
 }
 
-function TodoList() {
+function TodoList({isSignedIn}) {
   const [todoItems, setTodoItems] = React.useState(
     JSON.parse(localStorage.getItem("todos")) || []
   );
@@ -17,14 +17,19 @@ function TodoList() {
     setTodoItems(updatedTodos);
     localStorage.setItem("todos", JSON.stringify(updatedTodos));
   };
-
+  console.log("isSignedIn", isSignedIn)
   return (
     <div>
       <div className="flex space-between items-center">
         <h1 className="todo-list-title">Todo List</h1>
-        <button onClick={() => navigate("/add")} className="primary-button">
-          Add Task
-        </button>
+        {
+          isSignedIn === true ?
+          <button onClick={() => navigate("/add")} className="primary-button">
+            Add Task
+          </button>
+          :
+          <div/>
+        }
       </div>
 
       <div className="todo-list">
@@ -44,7 +49,7 @@ function TodoList() {
                   <span>{todo.priority}</span>
                 </div>
               </div>
-
+              { isSignedIn === true ?
               <div className="flex action-btns">
                 <span
                   onClick={() => {
@@ -55,6 +60,9 @@ function TodoList() {
                 </span>
                 <span onClick={() => navigate(`/edit/${todo.id}`)}>Edit</span>
               </div>
+              :
+              <div/>
+              }
             </div>
           </div>
         ))}

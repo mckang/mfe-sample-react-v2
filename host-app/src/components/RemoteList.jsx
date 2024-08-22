@@ -1,17 +1,19 @@
 import { mount } from 'todolist_app/ListApp';
 
 import React, { useRef, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-export default () => {
+export default ({isSignedIn=false}) => {
   const ref = useRef(null);
-  const navigate = useNavigate();
+  const history = useHistory();
 
   useEffect(() => {
-    mount(ref.current);
+    console.log("isSignedIn:", isSignedIn)
+
+    mount(ref.current, isSignedIn);
     const listener = (event) => {
       console.log("user_input : " +event.detail.link)
-      navigate(event.detail.link)
+      history.push(event.detail.link)
     }
 
     window.addEventListener('NAV_EVENT', listener)
@@ -19,7 +21,7 @@ export default () => {
     return () => {
       window.removeEventListener('NAV_EVENT', listener);
     }    
-  });
+  },[]);
 
   return <div ref={ref} />;
 };
