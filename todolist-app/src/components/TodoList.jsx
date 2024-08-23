@@ -21,7 +21,7 @@ function TodoList({isSignedIn}) {
   return (
     <div>
       <div className="flex space-between items-center">
-        <h1 className="todo-list-title">Todo List</h1>
+        <h1 className="todo-list-title"> 이상철 할일 </h1>
         {
           isSignedIn === true ?
           <button onClick={() => navigate("/add")} className="primary-button">

@@ -16,7 +16,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="container">
+      <div className="host-container">
         <Toaster position="top-center" reverseOrder={false} />
         <Header 
             onSignOut={() => setIsSignedIn(false)}
